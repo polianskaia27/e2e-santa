@@ -1,3 +1,8 @@
 {
-  "createdBoxName": ".layout-1__header-wrapper-fixed .txt-h3--max-1-lines"
+  "createdBoxName": ".layout-1__header-wrapper-fixed .txt-h3--max-1-lines",
+  "box": "div > div > div > a > div",
+    "myBoxMenu": ".layout-1__header-wrapper-fixed .toggle-menu-item span",
+    "settingsBtn": ".layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__right-item > .toggle-menu-wrapper > .toggle-menu-button",
+    "deleteField": ":nth-child(2) > .form-page-group__main > .frm-wrapper > .frm",
+    "deleteBtn": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.form-page__main > div:nth-child(2) > div.form-page-group__main > div.layout-row-end > div > div.layout-row-end > div"
 }
