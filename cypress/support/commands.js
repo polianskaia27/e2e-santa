@@ -50,3 +50,11 @@ Cypress.Commands.add("checkingOfDasboardMyBox", () => {
       expect(text).to.include("Подопечный");
     });
 });
+
+Cypress.Commands.add("deleteBox", (boxId) => {
+  cy.log(boxId);
+  cy.request({
+    method: "DELETE",
+    url: `/api/box/${boxId}`,
+  });
+});
