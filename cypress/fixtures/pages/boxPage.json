@@ -4,6 +4,20 @@
   "giftPriceToggle": "input[type=checkbox]",
   "maxAnount": ".MuiGrid-grid-xs-5 .frm",
   "currency": ".MuiGrid-grid-xs-7 .frm",
-  "additionalOptions": ".form-card__header span"
+  "additionalOptions": ".form-card__header span",
+  "addingNewParticipantsTitle": "div:nth-child(3) > div.form-page-group__title > span",
+  "drawToggle": "input[type=checkbox]",
+  "participantNameField": ":nth-child(1) > .frm-wrapper > #input-table-0",
+  "participantNameField2": ":nth-child(3) > .frm-wrapper > #input-table-1",
+  "participantEmailField": ":nth-child(2) > .frm-wrapper > #input-table-0",
+  "participantEmailField2": ":nth-child(4) > .frm-wrapper > #input-table-1",
+  "addingNewParticipantsBtn": "div.btn-main.base--clickable.btn--no-wrap",
+  "confirmationOfAddingNewParticipants": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.form-page__main > div:nth-child(3) > div.form-page-group__main > div > section > div > span",
+  "backToBox": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.form-page__footer > div > div",
+  "drawLink": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.tip.tip--green.tip--no-icon > section > div > span > a",
+  "drawTitle": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.heading > div.heading__left > span",
+  "drawBtn": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.heading > div.heading__right > div",
+  "confirmationDrawBtn": "#root > div.santa-modal.santa-modal--opened > div.santa-modal_content > div.santa-modal_content_buttons > div.btn-main.base--clickable",
+  "drawDoneTitle": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div > span.picture-notice__title.txt-h3--semi.txt"
 }
 

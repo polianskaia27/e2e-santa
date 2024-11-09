@@ -28,7 +28,25 @@ const loginPage = require("../fixtures/pages/loginPage.json");
 const generalElements = require("../fixtures/pages/general.json");
 
 Cypress.Commands.add("login", (userName, password) => {
+  cy.visit("/login");
   cy.get(loginPage.loginField).type(userName);
   cy.get(loginPage.passwordField).type(password);
   cy.get(generalElements.submitButton).click({ force: true });
+});
+
+Cypress.Commands.add("loginAndGetToTheLastBox", (email, password) => {
+  cy.login(email, password);
+  cy.get(generalElements.submitButton).click();
+  cy.get(mainPage.boxesMenu).click();
+  cy.get(dashboardPage.box).last().click();
+});
+
+Cypress.Commands.add("checkingOfDasboardMyBox", () => {
+  cy.get(dashboardPage.myBoxMenu)
+    .invoke("text")
+    .then((text) => {
+      expect(text).to.include("Участники");
+      expect(text).to.include("Моя карточка");
+      expect(text).to.include("Подопечный");
+    });
 });

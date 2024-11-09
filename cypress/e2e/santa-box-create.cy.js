@@ -27,7 +27,6 @@ describe("user can create a box and run it", () => {
   let inviteLink;
 
   it("user logins and create a box", () => {
-    cy.visit("/login");
     cy.login(users.userAutor.email, users.userAutor.password);
     cy.contains("Создать коробку").click();
     cy.get(boxPage.boxNameField).type(newBoxName);
@@ -42,13 +41,7 @@ describe("user can create a box and run it", () => {
     cy.contains("Дополнительные настройки");
     cy.get(generalElements.arrowRight).click();
     cy.get(dashboardPage.createdBoxName).should("have.text", newBoxName);
-    cy.get(dashboardPage.myBoxMenu)
-      .invoke("text")
-      .then((text) => {
-        expect(text).to.include("Участники");
-        expect(text).to.include("Моя карточка");
-        expect(text).to.include("Подопечный");
-      });
+    cy.checkingOfDasboardMyBox();
   });
 
   it("add participants", () => {
@@ -58,8 +51,10 @@ describe("user can create a box and run it", () => {
       .then((link) => {
         inviteLink = link;
       });
+    cy.get(dashboardPage.participantNameField).type(user);
     cy.clearCookies();
   });
+
   it("approve as user1", () => {
     cy.visit(inviteLink);
     cy.get(generalElements.submitButton).click();
@@ -79,11 +74,44 @@ describe("user can create a box and run it", () => {
     cy.clearCookies();
   });
 
+  it("add user2 and user3", () => {
+    cy.loginAndGetToTheLastBox(users.userAutor.email, users.userAutor.password);
+    cy.checkingOfDasboardMyBox();
+    cy.get(dashboardPage.settingsBtn).click();
+    cy.contains("Добавить участников").click({ force: true });
+    cy.get(boxPage.addingNewParticipantsTitle).contains(
+      "Добавить участников вручную"
+    );
+    cy.get(boxPage.drawToggle).check({ force: true });
+    cy.get(boxPage.participantNameField).type(users.user2.name);
+    cy.get(boxPage.participantEmailField).type(users.user2.email);
+    cy.get(boxPage.participantNameField2).type(users.user3.name);
+    cy.get(boxPage.participantEmailField2).type(users.user3.email);
+    cy.get(boxPage.addingNewParticipantsBtn).click({ force: true });
+    cy.contains("Карточки участников успешно созданы").should("exist");
+    cy.get(boxPage.confirmationOfAddingNewParticipants)
+      .invoke("text")
+      .then((text) => {
+        expect(text).to.include("Карточки участников успешно созданы");
+      });
+  });
+
+  it("draw", () => {
+    cy.loginAndGetToTheLastBox(users.userAutor.email, users.userAutor.password);
+    cy.get(boxPage.drawLink).click({ force: true });
+    cy.contains("Жеребьевка").should("exist");
+    cy.get(boxPage.drawBtn).click();
+    cy.contains("Проведение жеребьевки").should("exist");
+    cy.get(boxPage.confirmationDrawBtn).click();
+    cy.get(boxPage.drawDoneTitle)
+      .invoke("text")
+      .then((text) => {
+        expect(text).to.include("Жеребьевка проведена");
+      });
+  });
+
   after("delete box", () => {
-    cy.visit("/login");
-    cy.login(users.userAutor.email, users.userAutor.password);
-    cy.get(mainPage.boxesMenu).click();
-    cy.get(dashboardPage.box).last().click();
+    cy.loginAndGetToTheLastBox(users.userAutor.email, users.userAutor.password);
     cy.get(dashboardPage.settingsBtn).click();
     cy.contains("Архивация и удаление").click({ force: true });
     cy.get(dashboardPage.deleteField).type("Удалить коробку");
