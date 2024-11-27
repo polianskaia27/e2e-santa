@@ -26,6 +26,8 @@
 
 const loginPage = require("../fixtures/pages/loginPage.json");
 const generalElements = require("../fixtures/pages/general.json");
+const dashboardPage = require("../fixtures/pages/dashboardPage.json");
+const mainPage = require("../fixtures/pages/mainPage.json");
 
 Cypress.Commands.add("login", (userName, password) => {
   cy.visit("/login");

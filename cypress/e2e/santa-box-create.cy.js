@@ -50,8 +50,8 @@ describe("user can create a box and run it", () => {
       .invoke("text")
       .then((link) => {
         inviteLink = link;
+        Cypress.env("boxId", link.match(/\/box\/([^/]+)/)[1]);
       });
-    cy.get(dashboardPage.participantNameField).type(user);
     cy.clearCookies();
   });
 
@@ -87,6 +87,8 @@ describe("user can create a box and run it", () => {
     cy.get(boxPage.participantEmailField).type(users.user2.email);
     cy.get(boxPage.participantNameField2).type(users.user3.name);
     cy.get(boxPage.participantEmailField2).type(users.user3.email);
+    // cy.get(boxPage.participantNameField3).type(users.user.name);
+    // cy.get(boxPage.participantEmailField3).type(users.user.email);
     cy.get(boxPage.addingNewParticipantsBtn).click({ force: true });
     cy.contains("Карточки участников успешно созданы").should("exist");
     cy.get(boxPage.confirmationOfAddingNewParticipants)
@@ -111,10 +113,8 @@ describe("user can create a box and run it", () => {
   });
 
   after("delete box", () => {
-    cy.loginAndGetToTheLastBox(users.userAutor.email, users.userAutor.password);
-    cy.get(dashboardPage.settingsBtn).click();
-    cy.contains("Архивация и удаление").click({ force: true });
-    cy.get(dashboardPage.deleteField).type("Удалить коробку");
-    cy.get(dashboardPage.deleteBtn).click();
+    cy.login(users.userAutor.email, users.userAutor.password);
+    cy.contains("Создать коробку");
+    cy.deleteBox(Cypress.env("boxId"));
   });
 });
