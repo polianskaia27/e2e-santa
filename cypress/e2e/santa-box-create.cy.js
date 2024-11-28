@@ -5,7 +5,6 @@ const dashboardPage = require("../fixtures/pages/dashboardPage.json");
 const invitePage = require("../fixtures/pages/invitePage.json");
 const inviteeBoxPage = require("../fixtures/pages/inviteeBoxPage.json");
 const inviteeDashboardPage = require("../fixtures/pages/inviteeDashboardPage.json");
-const mainPage = require("../fixtures/pages/mainPage.json");
 import { faker } from "@faker-js/faker";
 
 describe("user can create a box and run it", () => {
