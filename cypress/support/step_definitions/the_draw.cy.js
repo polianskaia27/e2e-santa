@@ -1,10 +1,6 @@
+import { Given } from "@badeball/cypress-cucumber-preprocessor";
 const users = require("../../fixtures/users.json");
 const boxPage = require("../../fixtures/pages/boxPage.json");
-
-Given("the user is logged in as 'userAutor'", function () {
-  cy.login(users.userAutor.email, users.userAutor.password);
-  cy.contains("Создать коробку");
-});
 
 Given("the box has all required participants", function () {
   cy.loginAndGetToTheLastBox(users.userAutor.email, users.userAutor.password);

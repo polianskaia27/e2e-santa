@@ -1,10 +1,6 @@
-const users = require("../../fixtures/users.json");
-
-Given("the user is logged in as 'userAutor'", function () {
-  cy.login(users.userAutor.email, users.userAutor.password);
-  cy.contains("Создать коробку");
-});
+import { Given } from "@badeball/cypress-cucumber-preprocessor";
+import { getGlobalBoxId } from "../../support/global.js";
 
 Given("the user deletes the box", function () {
-  cy.deleteBox(Cypress.env("boxId"));
+  cy.deleteBox(getGlobalBoxId());
 });

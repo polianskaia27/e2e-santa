@@ -43,6 +43,12 @@ Cypress.Commands.add("loginAndGetToTheLastBox", (email, password) => {
   cy.get(dashboardPage.box).last().click();
 });
 
+Cypress.Commands.add("getToTheLastBox", () => {
+  // cy.get(generalElements.submitButton).click();
+  cy.get(mainPage.boxesMenu).click();
+  cy.get(dashboardPage.box).last().click();
+});
+
 Cypress.Commands.add("checkingOfDasboardMyBox", () => {
   cy.get(dashboardPage.myBoxMenu)
     .invoke("text")

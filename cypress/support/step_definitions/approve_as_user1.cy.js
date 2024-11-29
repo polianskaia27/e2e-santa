@@ -1,4 +1,5 @@
-const users = require("../../fixtures/users.json");
+import { Given } from "@badeball/cypress-cucumber-preprocessor";
+import { getGlobalInviteLink } from "../../support/global.js";
 const generalElements = require("../../fixtures/pages/general.json");
 const inviteeBoxPage = require("../../fixtures/pages/inviteeBoxPage.json");
 const inviteeDashboardPage = require("../../fixtures/pages/inviteeDashboardPage.json");
@@ -6,13 +7,16 @@ import { faker } from "@faker-js/faker";
 
 let wishes = faker.word.noun() + faker.word.adverb() + faker.word.adjective();
 
-Given("the participant logs in", function () {
-  cy.visit(Cypress.env(inviteLink));
-  cy.get(generalElements.submitButton).click();
-  cy.contains("войдите").click();
-  cy.login(users.user1.email, users.user1.password);
-  cy.contains("Создать карточку участника").should("exist");
-});
+Given(
+  "the participant logs as {string} and {string}",
+  function (string1, string2) {
+    cy.visit(getGlobalInviteLink());
+    cy.get(generalElements.submitButton).click();
+    cy.contains("войдите").click();
+    cy.login(string1, string2);
+    cy.contains("Создать карточку участника").should("exist");
+  }
+);
 
 Given("fills in his wishes", function () {
   cy.get(generalElements.submitButton).click();
