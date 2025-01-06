@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 const loginPage = require("../fixtures/pages/loginPage.json");
+const mainPage = require("../fixtures/pages/mainPage.json");
 const generalElements = require("../fixtures/pages/general.json");
 const dashboardPage = require("../fixtures/pages/dashboardPage.json");
 const mainPage = require("../fixtures/pages/mainPage.json");
@@ -33,18 +34,17 @@ Cypress.Commands.add("login", (userName, password) => {
   cy.visit("/login");
   cy.get(loginPage.loginField).type(userName);
   cy.get(loginPage.passwordField).type(password);
-  cy.get(generalElements.submitButton).click({ force: true });
+  cy.get(generalElements.mainButton).click({ force: true });
 });
 
 Cypress.Commands.add("loginAndGetToTheLastBox", (email, password) => {
   cy.login(email, password);
-  cy.get(generalElements.submitButton).click();
+  cy.get(generalElements.mainButton).click();
   cy.get(mainPage.boxesMenu).click();
   cy.get(dashboardPage.box).last().click();
 });
 
 Cypress.Commands.add("getToTheLastBox", () => {
-  // cy.get(generalElements.submitButton).click();
   cy.get(mainPage.boxesMenu).click();
   cy.get(dashboardPage.box).last().click();
 });
