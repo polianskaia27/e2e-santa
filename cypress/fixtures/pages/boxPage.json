@@ -14,12 +14,8 @@
   "participantEmailField2": ":nth-child(4) > .frm-wrapper > #input-table-1",
   "participantEmailField3": ":nth-child(6) > .frm-wrapper > #input-table-2",
   "addingNewParticipantsBtn": "div.btn-main.base--clickable.btn--no-wrap",
-  "confirmationOfAddingNewParticipants": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.form-page__main > div:nth-child(3) > div.form-page-group__main > div > section > div > span",
-  "backToBox": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.form-page__footer > div > div",
-  "drawLink": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.tip.tip--green.tip--no-icon > section > div > span > a",
-  "drawTitle": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.heading > div.heading__left > span",
-  "drawBtn": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div.heading > div.heading__right > div",
-  "confirmationDrawBtn": "#root > div.santa-modal.santa-modal--opened > div.santa-modal_content > div.santa-modal_content_buttons > div.btn-main.base--clickable",
-  "drawDoneTitle": "#root > div.layout-1 > section.layout-1__main-wrapper > div.layout-1__main > section > div > section > div > div > div > span.picture-notice__title.txt-h3--semi.txt"
+  "confirmationOfAddingNewParticipants": ".txt-secondary.txt.txt--green",
+  "drawLink": ".txt-secondary--med.txt.txt--orange.txt--underline",
+  "drawDoneTitle": ".picture-notice__title.txt-h3--semi.txt"
 }
 

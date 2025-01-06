@@ -11,7 +11,7 @@ Given(
   "the participant logs as {string} and {string}",
   function (string1, string2) {
     cy.visit(getGlobalInviteLink());
-    cy.get(generalElements.submitButton).click();
+    cy.get(generalElements.mainButton).click();
     cy.contains("войдите").click();
     cy.login(string1, string2);
     cy.contains("Создать карточку участника").should("exist");
@@ -19,7 +19,7 @@ Given(
 );
 
 Given("fills in his wishes", function () {
-  cy.get(generalElements.submitButton).click();
+  cy.get(generalElements.mainButton).click();
   cy.get(generalElements.arrowRight).click();
   cy.get(generalElements.arrowRight).click();
   cy.get(inviteeBoxPage.wishesInput).type(wishes);

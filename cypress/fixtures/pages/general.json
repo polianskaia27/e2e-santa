@@ -1,4 +1,4 @@
 {
   "arrowRight": ".btn-arrow-right",
-  "submitButton": ".btn-main"
+  "mainButton": ".btn-main"
 }

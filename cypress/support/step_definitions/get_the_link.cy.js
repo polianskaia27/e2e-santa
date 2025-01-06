@@ -5,7 +5,7 @@ const generalElements = require("../../fixtures/pages/general.json");
 const invitePage = require("../../fixtures/pages/invitePage.json");
 
 Given("the user generates an invite link", function () {
-  cy.get(generalElements.submitButton).click();
+  cy.get(generalElements.mainButton).click();
   cy.get(invitePage.inviteLink)
     .invoke("text")
     .then((link) => {
